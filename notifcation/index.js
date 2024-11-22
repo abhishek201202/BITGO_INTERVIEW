@@ -31,7 +31,6 @@ const sendNotificationToEmailById = async (sendNotificationRequest) => {
 
 
 const listNotificationByStatus = async (listNotificationRequest) => {
-    console.log("listNotificationRequest::", listNotificationRequest);
     const data = await NotificationDML.getNotificationByStatus(listNotificationRequest.status)
     return {
         status: "success",
@@ -40,7 +39,6 @@ const listNotificationByStatus = async (listNotificationRequest) => {
 };
 
 const updateNotificatiionById = async (updateNotificationRequest) => {
-    console.log("updateNotificationRequest::", updateNotificationRequest);
     return {
         status: "success",
         message: "Notification updated successfully"
