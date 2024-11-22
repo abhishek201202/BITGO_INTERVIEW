@@ -1,16 +1,28 @@
+const NotificationDML = require("./db")
+
 const createNotification = async (createNotificationRequest) => {
-    console.log("createNotificationRequest::", createNotificationRequest);
+    const id = await NotificationDML.create(createNotificationRequest)
     return {
         status: "success",
         message: "Notification created successfully",
         data: {
-            notificationId: 1
+            notificationId: id
         }
     }
 };
 
+const sendEmail = async (id) => {
+    const data = await NotificationDML.get(id);
+    NotificationDML.update(id, {
+        status: "SENT"
+    })
+    console.log(`notification sent for id ${id}`);
+}
+
 const sendNotificationToEmailById = async (sendNotificationRequest) => {
-    console.log("sendNotificationRequest::", sendNotificationRequest);
+    for(const id of sendNotificationRequest.ids) {
+        await sendEmail(id);
+    }
     return {
         status: "success",
         message: "Notification sent successfully"
@@ -20,7 +32,7 @@ const sendNotificationToEmailById = async (sendNotificationRequest) => {
 
 const listNotificationByStatus = async (listNotificationRequest) => {
     console.log("listNotificationRequest::", listNotificationRequest);
-    const data = [];
+    const data = await NotificationDML.getNotificationByStatus(listNotificationRequest.status)
     return {
         status: "success",
         data
