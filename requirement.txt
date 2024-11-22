@@ -1,0 +1,6 @@
+Create a crypto notification service as an HTTP Rest API server
+
+1. Create a Notification (Input parameters: Current Price of Bitcoin, Daily Percentage Change, Trading Volume, etc)
+2. Send a notification to email/emails
+3. List notifications (Sent, Pending, Failed)
+4. Update/Delete notification
