@@ -1,3 +1,10 @@
+## RUN THE BELOW COMMANDS TO START THE SERVER
+
+```bash
+npm i
+node index.js
+```
+
 ## CURLS TO TEST
 
 #1. create notification
